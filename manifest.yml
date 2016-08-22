@@ -1,0 +1,46 @@
+---
+applications:
+- name: asset-explorer-ipro-db
+  path: db
+  memory: 128M
+  no-route: true
+  env:
+      TARGET_CONTAINER : "asset-explorer-ipro-hdi"
+  services:
+    - asset-explorer-ipro-hdi
+    - pdms-data-model-hdi
+
+- name: asset-explorer-ipro-backend
+  port: 55031
+  memory: 512M
+  instances: 1
+  path: java/target/asset-explorer-ipro-backend.war
+  services:
+    - asset-explorer-ipro-hdi
+    - metric-storage-ups
+    - pdms-uaa
+  env:
+    TARGET_RUNTIME: tomee
+    JBP_CONFIG_JAVA_OPTS: 'java_opts: -Duser.timezone=UTC -Djavax.servlet.request.encoding=UTF-8 -Dfile.encoding=UTF-8'
+
+
+- name: asset-explorer-ipro-ui
+  path: ui
+  port: 55033
+  memory: 128M
+  env:
+    destinations: >
+      [
+        {"name":"asset-explorer-ipro-backend", "url":"http://localhost:55031", "forwardAuthToken": true},
+        {"name":"component-ipro-backend", "url":"http://localhost:55034", "forwardAuthToken": true},
+        {"name": "filter-ipro-ui", "url": "http://lspal153.pal.sap.corp:55025", "forwardAuthToken": true},
+        {"name": "servicecatalog", "url": "http://lspal153.pal.sap.corp:59500"}
+      ]
+  services:
+      - pdms-uaa
+resources:
+    - name: pdms-uaa
+    type: org.cloudfoundry.user-provided-service
+
+
+

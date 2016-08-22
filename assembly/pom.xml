@@ -43,27 +43,6 @@
                                     <addDefaultSpecificationEntries>false</addDefaultSpecificationEntries>
                                 </manifest>
                                 <manifestSections>
-                                    <!--<manifestSection>
-                                        <name>db/</name>
-                                        <manifestEntries>
-                                            <Content-Type>text/directory</Content-Type>
-                                            <MTA-Module>${app-name}-db</MTA-Module>
-                                        </manifestEntries>
-                                    </manifestSection>
-                                    <manifestSection>
-                                        <name>${app-name}-backend.war</name>
-                                        <manifestEntries>
-                                            <Content-Type>application/zip</Content-Type>
-                                            <MTA-Module>${app-name}-backend</MTA-Module>
-                                        </manifestEntries>
-                                    </manifestSection>
-                                    <manifestSection>
-                                        <name>ui/</name>
-                                        <manifestEntries>
-                                            <Content-Type>text/directory</Content-Type>
-                                            <MTA-Module>${app-name}-ui</MTA-Module>
-                                        </manifestEntries>
-                                    </manifestSection>-->
                                     <manifestSection>
                                         <name>META-INF/mtad.yaml</name>
                                         <manifestEntries>
@@ -75,73 +54,6 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-            <!--<plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>move-node-executable</id>
-                        <phase>none</phase>
-                    </execution>
-                    <execution>
-                        <id>delete-cfignore</id>
-                        <phase>none</phase>
-                    </execution>
-                    <execution>
-                        <id>filter-metadata</id>
-                        <phase>none</phase>
-                    </execution>
-                    <execution>
-                        <id>copy-jar-to-mtar</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target>
-                                <copy
-                                        file="${project.build.directory}/${app-name}-assembly-${project.version}-mta.jar"
-                                        tofile="${project.build.directory}/${app-name}-assembly-${project.version}.mtar"/>
-                            </target>
-                        </configuration>
-                    </execution>
-                    <<execution>
-                        <id>copy-SL_MANIFEST.XML</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target>
-                                <copy
-                                        file="../SL_MANIFEST.XML"
-                                        tofile="${project.build.directory}/SL_MANIFEST.XML"/>
-                            </target>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>com.sap.lm.sl.alm.prod.assembler</groupId>
-                <artifactId>alm-prod-assembler-maven-plugin</artifactId>
-                <version>${alm-prod-assembler-maven-plugin.version}</version>
-                <configuration>
-                    <mtaSourceDirs>
-                        <param>${project.build.directory}</param>
-                    </mtaSourceDirs>
-                    <overwrite>true</overwrite>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>create-SCA</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>assemble</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>-->
-        </plugins>
+            </plugin></plugins>
     </build>
 </project>

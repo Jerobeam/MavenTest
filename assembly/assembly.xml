@@ -12,45 +12,6 @@
             <source>../mtad.yaml</source>
             <outputDirectory>META-INF</outputDirectory>
         </file>
-        <!--<file>
-            <source>../java/target/asset-explorer-ipro-backend.war</source>
-            <outputDirectory>.</outputDirectory>
-        </file>-->
     </files>
-    <!--<fileSets>
-        <fileSet>
-            <directory>../db</directory>
-            <outputDirectory>db</outputDirectory>
-            <excludes>
-                <exclude>node/</exclude>
-                <exclude>target/</exclude>
-                <exclude>etc/</exclude>
-                <exclude>pom.xml</exclude>
-                <exclude>*.iml</exclude>
-            </excludes>
-        </fileSet>
-        <fileSet>
-            <directory>../ui</directory>
-            <outputDirectory>ui</outputDirectory>-->
-            <!--<excludes>-->
-                <!--<exclude>node/</exclude>-->
-                <!--<exclude>target/</exclude>-->
-                <!--<exclude>etc/</exclude>-->
-                <!--<exclude>pom.xml</exclude>-->
-                <!--<exclude>*.iml</exclude>-->
-                <!--<exclude>local-destinations.*</exclude>-->
-                <!--<exclude>default-services.*</exclude>-->
-                <!--<exclude>resources/*.html</exclude>-->
-                <!--<exclude>sapui5/</exclude>-->
-            <!--</excludes>-->
-            <!--<includes>
-                <include>resources/</include>
-                <include>node_modules/</include>
-                <include>package.json</include>
-                <include>server/</include>
-                <include>server.js</include>
-            </includes>
-        </fileSet>
-    </fileSets>-->
 </assembly>
 

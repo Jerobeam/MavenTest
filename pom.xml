@@ -27,8 +27,9 @@
 	</dependencies>
 
 	<build>
-		
+			
 		<plugins>
+			
 			<plugin>
 				<groupId>pl.project13.maven</groupId>
 				<artifactId>git-commit-id-plugin</artifactId>
@@ -81,7 +82,32 @@
 					</validationProperties>
 					<validationShouldFailIfNoMatch>true</validationShouldFailIfNoMatch>
 				</configuration>
-			</plugin>
+			</plugin>		
+
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.0.1</version>
+				<executions>
+				  <execution>
+					<id>copy-resources</id>
+					<!-- here the phase you need -->
+					<phase>install</phase>
+					<goals>
+					  <goal>copy-resources</goal>
+					</goals>
+					<configuration>
+					  <outputDirectory>${basedir}/target/extra-resources</outputDirectory>
+					  <resources>          
+						<resource>
+						  <directory>gitstatus</directory>
+						  <filtering>true</filtering>
+						</resource>
+					  </resources>              
+					</configuration>            
+				  </execution>
+				</executions>
+			  </plugin>
+				
 		</plugins>
 	
 		<filters>

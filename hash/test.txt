@@ -1,2 +1,0 @@
-hash ${git.commit.id}
-${name}

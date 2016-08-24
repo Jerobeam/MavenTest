@@ -20,8 +20,8 @@ modules:
     parameters:
       memory: 512M
     properties:
-      name: ${name}
-      githash: ${git.commit.id}
+      name: Machine Explorer IPro
+      githash: 050c50d56826ca22498a1e9fe5610f641cc27747
       JBP_CONFIG_JAVA_OPTS: 'java_opts: -Duser.timezone=UTC -Djavax.servlet.request.encoding=UTF-8 -Dfile.encoding=UTF-8'
       SERVICE_REGISTRATION: '{
                                "id": "com.sap.pdms.ipro.asset-explorer",

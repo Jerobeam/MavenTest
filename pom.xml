@@ -27,13 +27,14 @@
 	</dependencies>
 
 	<build>
-			
 		<plugins>
-			
+		
+			<!--Git Plugin-->
 			<plugin>
 				<groupId>pl.project13.maven</groupId>
 				<artifactId>git-commit-id-plugin</artifactId>
 				<version>2.2.1</version>
+				<inherited>false</inherited>
 				<executions>
 					<execution>
 						<id>get-the-git-infos</id>
@@ -50,7 +51,7 @@
 					<dateFormatTimeZone>${user.timezone}</dateFormatTimeZone>
 					<verbose>false</verbose>
 					<generateGitPropertiesFile>true</generateGitPropertiesFile>
-					<generateGitPropertiesFilename>git.properties</generateGitPropertiesFilename>
+					<generateGitPropertiesFilename>${basedir}/gitplugin/git.properties</generateGitPropertiesFilename>
 					<format>properties</format>
 					<skipPoms>false</skipPoms>
 					<injectAllReactorProjects>false</injectAllReactorProjects>
@@ -82,46 +83,41 @@
 					</validationProperties>
 					<validationShouldFailIfNoMatch>true</validationShouldFailIfNoMatch>
 				</configuration>
-			</plugin>		
-
+			</plugin>
+			
+			<!--Plugin to process resources during the "install"-lifecycle-->
 			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>
 				<version>3.0.1</version>
+				<inherited>false</inherited>
 				<executions>
 				  <execution>
 					<id>copy-resources</id>
-					<!-- here the phase you need -->
 					<phase>install</phase>
 					<goals>
 					  <goal>copy-resources</goal>
 					</goals>
 					<configuration>
-					  <outputDirectory>${basedir}/target/extra-resources</outputDirectory>
+					  <outputDirectory>${basedir}/gitplugin</outputDirectory>
 					  <resources>          
 						<resource>
-						  <directory>gitstatus</directory>
+						  <directory>.</directory>
+							<includes>
+							  <include>mtad.yaml</include>
+							</includes>
 						  <filtering>true</filtering>
 						</resource>
 					  </resources>              
 					</configuration>            
 				  </execution>
 				</executions>
-			  </plugin>
-				
-		</plugins>
-	
+			</plugin>
+		</plugins>	
+		
 		<filters>
-			<filter>git.properties</filter>
+			<filter>${basedir}/gitplugin/git.properties</filter>
 		</filters>
 		
-        <resources>
-			<resource>
-				<directory>./</directory>
-				<filtering>true</filtering>
-			</resource>
-        </resources>
-
-	
 	</build>
 
 	<profiles>

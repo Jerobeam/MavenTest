@@ -9,7 +9,7 @@
     <includeBaseDirectory>false</includeBaseDirectory>
     <files>
         <file>
-            <source>../mtad.yaml</source>
+            <source>../gitplugin/mtad.yaml</source>
             <outputDirectory>META-INF</outputDirectory>
         </file>
     </files>
